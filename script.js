@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://job-management-admin-lmqi.onrender.com/api/users'; // Corrected Port
+const API_BASE_URL = 'https://job-management-admin-lmqi.onrender.com/api'; // Corrected Port
   .then(res => res.json())
   .then(data => console.log(data));
 
@@ -470,3 +470,18 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn("One or more salary slider display elements (filterMinSalarySlider, filterMaxSalarySlider, sliderValueDisplay, filterTrack) not found for initial setup within DOMContentLoaded.");
     }
 });
+
+
+
+function applyFilters() {
+    const filters = {
+        job_type: filterJobType?.value || '',
+        location: filterLocation?.value || '',
+        keywords: filterKeywords?.value || '',
+        salary_min: filterMinSalarySlider?.value || '',
+        salary_max: filterMaxSalarySlider?.value || ''
+    };
+
+    fetchJobs(filters);
+}
+
