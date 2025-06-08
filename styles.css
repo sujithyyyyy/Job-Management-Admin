@@ -1,0 +1,1461 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@1&display=swap");
+
+body {
+  font-family: "Satoshi Variable", sans-serif; /* Apply Satoshi Variable as the default font */
+  margin: 0;
+  background-color: #f4f6f8;
+  color: #303030;
+  
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+header {
+  background-color: #fff;
+  width: 890px; /* Specific width */
+  height: 80px; /* Specific height */
+  /* top: 21px;  Removed as it requires position: absolute; see note below */
+  /* left: 275px; Removed as it requires position: absolute; see note below */
+  position: relative; /* Or 'absolute' if top/left are strictly needed. 'relative' allows centering with margin:auto */
+  margin: 30px auto; /* This centers the block, adjust top margin if 21px from viewport top is critical */
+  padding: 0 30px; /* Horizontal padding for content inside */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 122px; /* Specific border radius */
+  border: 1px solid #e0e0e0; /* Assuming a light grey border for the 1px width */
+  display: flex; /* To center nav content */
+  align-items: center; /* Vertically center nav content */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between; /* Distributes space: logo left, links center, button right */
+  align-items: center;
+  width: 100%; /* Nav takes full width of header */
+}
+
+nav .logo img {
+  height: 35px; /* Adjust as needed */
+  vertical-align: middle;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  /* Flex grow can help center group if needed, but space-between on parent is better */
+  /* flex-grow: 1; */
+  /* justify-content: center; */ /* To center the links block if it's narrower than available space */
+}
+
+nav ul li {
+  margin: 0 20px; /* Adjust gap between nav items */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-family: "Satoshi Variable", sans-serif; /* Applied Satoshi Variable font */
+  font-weight: 600; /* Specific font weight */
+  font-size: 16px; /* Specific font size */
+  line-height: 100%; /* Specific line height */
+  letter-spacing: 0%; /* Specific letter spacing */
+}
+
+nav ul li a:hover {
+  color: #6a1b9a;
+}
+
+.create-jobs-btn {
+  background: linear-gradient(180deg, #a128ff 0%, #6100ad 113.79%);
+  color: white;
+  border: none;
+  padding: 12px 25px; /* Adjust padding for button size */
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: "Arial", sans-serif;
+  white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.create-jobs-btn:hover {
+  background: linear-gradient(180deg, #8f23e0 0%, #500094 113.79%);
+}
+
+main {
+  padding: 20px 5%;
+}
+
+.filters-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.filter-dropdowns select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.salary-range-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add this line to distribute space between title and value */
+  margin-bottom: 10px; /* Adjust the gap as needed */
+}
+
+.salary-range-filter span {
+  margin-right: 10px;
+}
+
+.salary-range-filter .slider {
+  width: 150px;
+}
+
+.job-listings {
+  display: grid;
+  /* Adjusted minmax to better fit the new card design based on the image. 
+       You might need to tweak 280px depending on final content and desired density. */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px; /* Increased gap slightly as per visual spacing in the image */
+}
+
+.job-card {
+  background-color: #fff;
+  border-radius: 20px; /* More rounded corners */
+  padding: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08); /* Softer, more spread shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes button to the bottom */
+  border: 1px solid #e0e0e0; /* Subtle border */
+  /* removed: border-left: 5px solid #2196f3; */
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  margin-bottom: 15px;
+}
+
+.company-logo-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px; /* Rounded square for logo background */
+  background-color: #ffffff; /* White background for the logo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensures image doesn't spill out */
+  border: 1px solid #eee; /* Light border for the logo container */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.job-card .company-logo img {
+  width: 35px; /* Adjust based on actual logo aspect ratios */
+  height: 35px;
+  object-fit: contain; /* Ensures logo is scaled correctly */
+  /* removed: border-radius: 5px; */
+  /* removed: margin-bottom: 10px; */
+}
+
+/* Updated .job-card .time-ago to .job-card-time-ago for clarity */
+.job-card-time-ago {
+  background-color: #e6f2ff; /* Light blue background from image */
+  color: #007bff; /* Blue text color */
+  padding: 6px 12px;
+  border-radius: 15px; /* Pill shape */
+  font-size: 0.75em; /* Smaller font size */
+  font-weight: 500;
+  /* removed: position: absolute; top: 10px; right: 10px; */
+}
+
+.job-card .job-title {
+  /* Changed from job-details h3 */
+  font-size: 1.1em; /* Slightly larger title */
+  font-weight: 600;
+  color: #333;
+  margin-top: 0; /* Reset margin */
+  margin-bottom: 10px;
+}
+
+.job-meta-info {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between meta items */
+  margin-bottom: 15px;
+  font-size: 0.85em;
+  color: #555;
+}
+
+.job-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between icon and text */
+}
+
+.job-meta-item .icon {
+  /* Placeholder for icons - you'll need to add actual icons (SVG, font icon) */
+  /* Example: width: 16px; height: 16px; fill: #555; */
+  margin-right: 3px; /* Consistent with your existing .icon style */
+}
+
+.job-card .job-description-summary {
+  /* Changed from job-details ul */
+  font-size: 0.8em;
+  color: #666;
+  padding-left: 0; /* Remove default ul padding */
+  list-style-position: inside; /* If using actual list items */
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.job-card .job-description-summary ul {
+  padding-left: 15px; /* Indent for bullet points */
+  margin: 0;
+}
+
+.job-card .job-description-summary li {
+  margin-bottom: 5px;
+}
+
+/* Updated .apply-now-btn to .job-card-apply-btn for specificity */
+.job-card-apply-btn {
+  background-color: #007bff; /* Bright blue from image */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px; /* Rounded corners for button */
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600; /* Bolder text */
+  font-size: 0.95em;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.job-card-apply-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Modal Styling - Consolidated and Corrected */
+.modal {
+  display: none; /* Hidden by default - JavaScript will toggle this */
+  position: fixed;
+  z-index: 1000; /* Ensure modal is on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if content is too long */
+  background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto; /* Used with flex to center, can also use top/left transform */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 80%; /* Default width */
+  max-width: 700px; /* Maximum width of the modal */
+  position: relative;
+  max-height: 90vh; /* Max height to prevent full page coverage */
+  overflow-y: auto; /* Enable vertical scroll within modal content */
+}
+
+.modal-title {
+  /* Style for centering the modal title */
+  text-align: center;
+  margin-top: 0; /* Remove default top margin if any */
+  margin-bottom: 25px; /* Space below the title */
+  font-size: 24px; /* Adjust as needed */
+  color: #333;
+}
+
+.close-button,
+.close-btn {
+  /* Ensure both classes are styled */
+  color: #aaa;
+  float: right; /* Keep it to the right */
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute; /* Position relative to modal-content */
+  top: 15px;
+  right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus,
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form Specific Styling */
+#job-creation-form .form-row {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#job-creation-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Consistent bottom margin for all form groups */
+  flex-basis: 100%; /* Default to full width, overridden by half/specific widths */
+}
+
+#job-creation-form .form-group-half {
+  flex-basis: calc(50% - 10px); /* Half width with a small gap */
+}
+
+/* Styling for the salary inputs container to use flex */
+#job-creation-form .salary-inputs {
+  display: flex;
+  justify-content: space-between; /* Distribute space between min/max */
+}
+
+/* Individual salary inputs */
+#job-creation-form .salary-inputs input {
+  flex-basis: calc(
+    50% - 5px
+  ); /* Each input takes almost half, allowing for a gap */
+  /* If you want a more explicit gap, you can do: */
+  /* width: 48%; */
+}
+
+/* Add a specific margin to the first salary input if using width % */
+/* #job-creation-form .salary-inputs input#salary-min {
+    margin-right: 4%; 
+} */
+
+#job-creation-form .form-group-salary-container {
+  flex-basis: calc(50% - 10px); /* Align with other half-width fields */
+}
+
+#job-creation-form .form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
+}
+
+#job-creation-form input[type="text"],
+#job-creation-form input[type="date"],
+#job-creation-form select,
+#job-creation-form textarea {
+  width: 100%; /* Make inputs take full width of their container */
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+/* Style for placeholder text */
+#job-creation-form input[type="text"]::placeholder,
+#job-creation-form input[type="date"]::placeholder, /* Though date inputs might not show placeholders consistently across browsers */
+#job-creation-form textarea::placeholder {
+  color: #bcbcbc;
+  opacity: 1; /* Firefox needs this to override default opacity */
+}
+
+/* For older browsers, you might need vendor prefixes, though ::placeholder is widely supported */
+#job-creation-form input[type="text"]::-webkit-input-placeholder {
+  /* Chrome, Safari, Opera, Edge */
+  color: #bcbcbc;
+}
+#job-creation-form input[type="text"]::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #bcbcbc;
+  opacity: 1;
+}
+#job-creation-form input[type="text"]:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #bcbcbc;
+}
+#job-creation-form input[type="text"]:-moz-placeholder {
+  /* Firefox 18- */
+  color: #bcbcbc;
+  opacity: 1;
+}
+
+#job-creation-form textarea::-webkit-input-placeholder {
+  /* Chrome, Safari, Opera, Edge */
+  color: #bcbcbc;
+}
+#job-creation-form textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #bcbcbc;
+  opacity: 1;
+}
+#job-creation-form:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #bcbcbc;
+}
+#job-creation-form:-moz-placeholder {
+  /* Firefox 18- */
+  color: #bcbcbc;
+  opacity: 1;
+}
+
+#job-creation-form input[type="text"]:focus,
+#job-creation-form input[type="date"]:focus,
+#job-creation-form select:focus,
+#job-creation-form textarea:focus {
+  border: 1px solid #222222;
+  outline: none;
+}
+/* Change label color on input focus */
+#job-creation-form input[type="text"]:focus + label,
+#job-creation-form input[type="date"]:focus + label,
+#job-creation-form select:focus + label,
+#job-creation-form textarea:focus + label,
+#job-creation-form input[type="text"]:focus ~ label, /* For cases where label is not immediately after */
+#job-creation-form input[type="date"]:focus ~ label,
+#job-creation-form select:focus ~ label,
+#job-creation-form textarea:focus ~ label {
+  color: black;
+}
+
+/* For the specific structure where label is before input */
+#job-creation-form .form-group input:focus ~ label,
+#job-creation-form .form-group select:focus ~ label,
+#job-creation-form .form-group textarea:focus ~ label {
+  color: black;
+}
+
+/* More robust way to change label color when its associated input is focused */
+#job-creation-form .form-group:focus-within label {
+  color: black;
+}
+
+#job-creation-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#job-creation-form .form-actions {
+  display: flex;
+  justify-content: space-between; /* Align buttons to the right */
+  align-items: flex-end;
+  margin-top: 25px;
+}
+
+#job-creation-form .form-actions button {
+  padding: 12px 25px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#job-creation-form .save-draft-btn {
+  background-color: #ffffff; /* Light grey for draft */
+  color: #222222;
+  width: 232px;
+  height: 59px;
+  top: 683px;
+  left: 40px;
+  border: 1px solid #222222 !important;
+  border-radius: 10px;
+  gap: 10px;
+  padding: 16px 60px;
+}
+
+
+#job-creation-form .save-draft-btn:hover {
+  background-color: #bdbdbd;
+  border: 1px solid #222222;
+}
+
+#job-creation-form .publish-btn {
+  width: 207px;
+  height: 59px;
+  top: 683px;
+  left: 601px;
+  border-radius: 10px;
+  gap: 10px;
+  padding: 16px 60px;
+  background: #00AAFF;
+  color: white;
+}
+
+#job-creation-form .publish-btn:hover {
+  background: #0099e6;
+}
+/* Responsive adjustments for the modal form */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  #job-creation-form .form-group-half {
+    flex-basis: 100%; /* Stack elements on smaller screens */
+    margin-right: 0; /* Remove right margin when stacked */
+  }
+
+  #job-creation-form .salary-inputs {
+    flex-direction: column; /* Stack salary inputs */
+  }
+
+  #job-creation-form .salary-inputs input {
+    flex-basis: auto; /* Reset basis */
+    width: 100%; /* Full width when stacked */
+  }
+
+  #job-creation-form .salary-inputs input#salary-min {
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 10px; /* Add bottom margin when stacked */
+  }
+
+  #job-creation-form .form-group-salary-container {
+    flex-basis: 100%; /* Full width on small screens */
+  }
+
+  #job-creation-form .form-actions {
+    flex-direction: column;
+  }
+
+  #job-creation-form .form-actions button {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  #job-creation-form .form-actions button:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  /* Adjusted breakpoint for better responsiveness */
+  nav ul li {
+    margin-left: 20px; /* Reduce spacing on smaller screens */
+  }
+  .create-jobs-btn {
+    padding: 10px 20px;
+    margin-left: 20px;
+  }
+  header {
+    margin: 15px 2%;
+    padding: 10px 3%;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack logo and nav items */
+    align-items: flex-start;
+  }
+  nav .logo {
+    margin-bottom: 10px;
+  }
+  nav ul {
+    flex-direction: column; /* Stack nav items */
+    width: 100%;
+    align-items: flex-start;
+  }
+  nav ul li {
+    margin-left: 0;
+    margin-bottom: 10px; /* Space between stacked items */
+    width: 100%;
+  }
+  nav ul li a {
+    display: block; /* Make links take full width */
+    padding: 5px 0;
+  }
+  .create-jobs-btn {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .filters-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-dropdowns select,
+  .search-bar input[type="text"] {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+  .salary-range-filter {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .modal-content {
+    width: 90%;
+    margin: 20% auto;
+  }
+}
+
+/* Responsive adjustments will need significant review if fixed positioning is used */
+@media (max-width: 920px) {
+  /* Adjust breakpoint based on 890px width */
+  header {
+    width: 95%; /* Switch to percentage width */
+    /* top: 10px; */ /* Adjust if using absolute positioning */
+    /* left: 2.5%; */ /* Adjust if using absolute positioning */
+    margin: 20px auto; /* Re-enable auto margins for responsiveness */
+    padding: 0 20px;
+    height: auto; /* Allow height to adjust */
+    border-radius: 60px;
+  }
+  nav {
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: center; /* Center items when they wrap */
+  }
+  nav .logo {
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  nav ul {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  nav ul li {
+    margin: 0 10px; /* Reduce margin for smaller screens */
+  }
+  .create-jobs-btn {
+    width: auto; /* Allow button to size to content */
+    margin: 0 auto; /* Center button */
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Stack nav links */
+    align-items: center; /* Center stacked links */
+  }
+  nav ul li {
+    margin: 5px 0; /* Adjust margin for stacked links */
+  }
+  header {
+    border-radius: 30px;
+  }
+}
+
+.job-filter-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 0px 28px;
+  font-family: "Segoe UI", "Arial", sans-serif;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.filter-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-block input[type="text"] {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  padding: 10px 0 10px 36px;
+  width: 100%;
+  color: #222;
+  font-family: inherit;
+}
+
+.filter-block select {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  padding: 10px 0 10px 36px;
+  width: 100%;
+  color: #222;
+  font-family: inherit;
+  appearance: none;
+}
+.filter-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.salary-label {
+  font-size: 1rem;
+  color: #444;
+  margin-right: 18px;
+  font-weight: 500;
+}
+
+.dual-range-slider {
+  position: relative;
+  width: 100px;
+  margin: 0 12px 0 0;
+  display: inline-block;
+}
+
+.dual-range-slider input[type="range"] {
+  position: absolute;
+  width: 100px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  margin: 0;
+  height: 24px;
+  pointer-events: auto;
+}
+
+.dual-range-slider input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000000;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(97, 0, 173, 0.15);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dual-range-slider input[type="range"]::-moz-range-thumb {
+  pointer-events: all;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000000;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(97, 0, 173, 0.15);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dual-range-slider input[type="range"]::-ms-thumb {
+  pointer-events: all;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #000000;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dual-range-slider input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+}
+.dual-range-slider input[type="range"]::-ms-fill-lower,
+.dual-range-slider input[type="range"]::-ms-fill-upper {
+  background: #e0e0e0;
+  border-radius: 3px;
+}
+.dual-range-slider input[type="range"]:focus {
+  outline: none;
+}
+.slider-track {
+  position: absolute;
+  height: 6px;
+  background: linear-gradient(90deg, #000000 0%, #000000 100%);
+  border-radius: 3px;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+.slider-node {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: #101010;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.slider-node-start {
+  left: -6px;
+}
+
+.slider-node-end {
+  right: -6px;
+}
+
+.salary-value {
+  font-size: 1rem;
+  color: #000000;
+  font-weight: 600;
+  margin-left: 10px;
+  min-width: 110px;
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+}
+
+.filter-divider {
+  width: 1px;
+  height: 36px;
+  background: #e0e0e0;
+  margin: 0 12px;
+  border-radius: 2px;
+}
+@media (max-width: 900px) {
+  .job-filter-bar {
+    flex-wrap: wrap;
+    padding: 14px 8px;
+  }
+  .filter-block {
+    padding: 0 8px;
+    margin-bottom: 10px;
+  }
+  .filter-divider {
+    height: 24px;
+    margin: 0 6px;
+  }
+  .dual-range-slider {
+    width: 120px;
+  }
+}
+@media (max-width: 600px) {
+  .job-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .filter-block {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .dual-range-slider {
+    .salary-range-selector {
+      width: 100%;
+      max-width: 420px;
+      margin: 32px auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .salary-labels {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .salary-label {
+      font-size: 1rem;
+      color: #111;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .salary-values {
+      font-size: 1.1rem;
+      color: #111;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .salary-slider-wrapper {
+      position: relative;
+      width: 100%;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slider-base {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 2px;
+      background: #111;
+      z-index: 0;
+      transform: translateY(-50%);
+    }
+    .salary-slider-wrapper input[type="range"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 36px;
+      background: transparent;
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      pointer-events: auto;
+      z-index: 2;
+      cursor: pointer;
+    }
+    .salary-slider-wrapper input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #111;
+      cursor: pointer;
+      border: none;
+      pointer-events: auto;
+      position: relative;
+      z-index: 3;
+    }
+    .salary-slider-wrapper input[type="range"]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #111;
+      cursor: pointer;
+      border: none;
+      pointer-events: auto;
+      position: relative;
+      z-index: 3;
+    }
+    .salary-slider-wrapper input[type="range"]::-ms-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #111;
+      cursor: pointer;
+      border: none;
+      pointer-events: auto;
+      position: relative;
+      z-index: 3;
+    }
+    .salary-slider-wrapper input[type="range"]::-webkit-slider-runnable-track {
+      height: 2px;
+      background: transparent;
+    }
+    .salary-slider-wrapper input[type="range"]::-ms-fill-lower,
+    .salary-slider-wrapper input[type="range"]::-ms-fill-upper {
+      background: transparent;
+    }
+    .salary-slider-wrapper input[type="range"]:focus {
+      outline: none;
+    }
+    @media (max-width: 600px) {
+      .salary-range-selector {
+        max-width: 98vw;
+      }
+    }
+  }
+  .range-values {
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+.salary-slider-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.salary-slider-title {
+  font-size: 1rem;
+  color: #111;
+  font-weight: 600;
+  padding-top: 10%;
+}
+.salary-slider-value {
+  font-size: 1rem;
+  color: #111;
+  font-weight: 500;
+  padding-top: 10%;
+}
+
+.salary-slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 36px;
+  margin: 0 auto 24px auto;
+  display: flex;
+  align-items: center;
+}
+.salary-slider-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: #111;
+  z-index: 0;
+  transform: translateY(-50%);
+}
+
+.salary-slider-container input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 6px solid #111;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 3;
+  margin-top: 0%;
+}
+
+.salary-slider-container input[type="range"]::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #111;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 3;
+  margin-top: 0%;
+}
+.salary-slider-container input[type="range"]::-ms-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #111;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 3;
+  margin-top: 0%;
+}
+.salary-slider-container input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  background: transparent;
+}
+.salary-slider-container input[type="range"]::-ms-fill-lower,
+.salary-slider-container input[type="range"]::-ms-fill-upper {
+  background: transparent;
+}
+.salary-slider-container input[type="range"]:focus {
+  outline: none;
+}
+@media (max-width: 600px) {
+  .salary-slider-row,
+  .salary-slider-container {
+    max-width: 98vw;
+  }
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  padding: 16px;
+  font-family: "Segoe UI", sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-item input[type="text"],
+.filter-item select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+}
+
+.icon {
+  font-size: 18px;
+  color: #666;
+}
+
+.divider {
+  height: 24px;
+  width: 1px;
+  background: #ccc;
+  margin: 0 8px;
+}
+
+.salary-range {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.salary-range input[type="range"] {
+  width: 140px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 2px;
+  background: #999;
+  outline: none;
+  border-radius: 2px;
+  position: relative;
+  margin-top: 4px;
+}
+
+.salary-range input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  background: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -6px;
+}
+
+.salary-range input[type="range"]::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  background: #000;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.range-values {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.salary-filter {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  font-family: sans-serif;
+}
+
+.salary-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.slider-container {
+  position: relative;
+  height: 30px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: transparent;
+  position: absolute;
+  pointer-events: none;
+  margin: 0;
+  padding: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #000000;
+  border: 4px solid #ffffff;
+  cursor: pointer;
+  pointer-events: all;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: black;
+  border: 4px solid white;
+  cursor: pointer;
+  pointer-events: all;
+  position: relative;
+  z-index: 2;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: #ccc;
+  border-radius: 3px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.salary-block {
+  width: 300px;
+  font-family: Arial, sans-serif;
+}
+
+.salary-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.salary-slider-title,
+.salary-slider-value {
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.salary-slider-container {
+  position: relative;
+  height: 40px;
+}
+
+input[type="range"] {
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  top: 20px;
+  margin: 0;
+  padding: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #000;
+  border: 4px solid #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: none;
+  margin-top: -8px;
+}
+
+.slider-track {
+  position: absolute;
+  top: 29px;
+  height: 4px;
+  background: #ccc;
+  width: 100%;
+  z-index: 0;
+  border-radius: 4px;
+}
+
+.slider-track::before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  background: #000;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+
+
+/* Job listings container */
+.job-listings-container {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    316px
+  ); /* Exactly 4 columns of 316px width */
+  gap: 16px;
+  max-width: calc(316px * 4 + 16px * 3); /* Width of 4 cards + 3 gaps */
+  margin: 0 auto;
+  justify-content: center; /* Center the grid in the container */
+}
+/* Job card */
+.job-card {
+  width: 316px;
+  height: 360px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Timestamp */
+.timestamp {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 4px 12px;
+  background-color: #e3f2fd;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #5a5a5a;
+}
+/* Logo container */
+/* Logo container - outer background card */
+.logo-container-1 {
+  width: 84px;
+  height: 82px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fefefd 0%, #f1f1f1 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0 20px 0; /* Aligned with title */
+  position: relative;
+}
+
+/* Logo itself - perfectly centered circle */
+.logo-container-1 .logo-container {
+  width: 66px;
+  height: 66px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+
+
+.logo-container img.company-logo-img {
+  width: 100%; /* Or a specific pixel value */
+  height: 100%; /* Or a specific pixel value */
+  object-fit: contain; /* Or 'cover', depending on desired look */
+}
+
+/* Job title */
+.job-title {
+  width: 190px;
+  height: 27px;
+  position: relative;
+  left: 1px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Job details */
+.job-details {
+  width: 263.08px;
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #5a5a5a;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.detail-item svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Bullet points */
+.bullet-points {
+  padding: 10px 0px 0px 0px;
+  margin-bottom: 30px;
+  list-style-position: outside;
+  margin-left: 16px; /* 20px padding + 16px indentation */
+  font-size: 14px;
+  color: #5a5a5a;
+  line-height: 100%;
+}
+
+.bullet-points li {
+  margin-bottom: 8px;
+}
+
+.bullet-points li:last-child {
+  margin-bottom: 0;
+}
+
+/* Apply button */
+.apply-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  height: 44px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  width: calc(100% - 40px); /* Full width minus left and right margins */
+}
+
+.apply-btn:hover {
+  background-color: #1976d2;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .job-listings-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .job-card {
+    width: 100%;
+    max-width: 316px;
+  }
+}
