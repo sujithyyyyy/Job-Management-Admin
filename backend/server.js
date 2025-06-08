@@ -3,12 +3,15 @@ import sqlite3 from 'sqlite3';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url'; // Needed for __dirname in ES modules
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = process.env.PORT || 5501;
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -45,13 +48,13 @@ const db = new sqlite3.Database(DB_PATH, (err) => {
 // POST /api/jobs - Create a new job
 app.post('/api/jobs', (req, res) => {
     const {
-        job_title,
-        company_name,
+        job_title, // Changed from title to job_title to match db
+        company_name, // Changed from company to company_name
         location,
-        job_type,
+        job_type, // Changed from type to job_type
         salary_min,
         salary_max,
-        job_description,
+        job_description, // Changed from description to job_description
         application_deadline
     } = req.body;
 
@@ -61,8 +64,9 @@ app.post('/api/jobs', (req, res) => {
     if (!company_name) missingFields.push('company_name');
     if (!location) missingFields.push('location');
     if (!job_type) missingFields.push('job_type');
-    if (salary_min === undefined || salary_min === null) missingFields.push('salary_min'); // Assuming 0 is a valid min salary
-    if (salary_max === undefined || salary_max === null) missingFields.push('salary_max'); // Assuming 0 is a valid max salary
+    // Assuming 0 is a valid salary, so check for undefined/null
+    if (salary_min === undefined || salary_min === null) missingFields.push('salary_min'); 
+    if (salary_max === undefined || salary_max === null) missingFields.push('salary_max'); 
     if (!job_description) missingFields.push('job_description');
     if (!application_deadline) missingFields.push('application_deadline');
 
@@ -70,22 +74,42 @@ app.post('/api/jobs', (req, res) => {
         return res.status(400).json({ message: `Missing mandatory fields: ${missingFields.join(', ')}` });
     }
 
-    const sql = `INSERT INTO jobs (job_title, company_name, location, job_type, salary_min, salary_max, job_description, application_deadline)
+    const sqlInsert = `INSERT INTO jobs (job_title, company_name, location, job_type, salary_min, salary_max, job_description, application_deadline)
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-    const params = [job_title, company_name, location, job_type, salary_min, salary_max, job_description, application_deadline];
+    const paramsInsert = [job_title, company_name, location, job_type, salary_min, salary_max, job_description, application_deadline];
 
-    db.run(sql, params, function(err) {
+    db.run(sqlInsert, paramsInsert, function(err) {
         if (err) {
             console.error('Error inserting job:', err.message);
             return res.status(500).json({ message: 'Failed to create job posting.', error: err.message });
         }
-        res.status(201).json({ message: 'Job created successfully', id: this.lastID, ...req.body });
+        // After successful insertion, fetch the newly created job
+        const newJobId = this.lastID;
+        const sqlSelect = 'SELECT * FROM jobs WHERE id = ?';
+        db.get(sqlSelect, [newJobId], (selectErr, newJob) => {
+            if (selectErr) {
+                console.error('Error fetching newly created job:', selectErr.message);
+                // Still return 201 as the job was created, but indicate data retrieval issue
+                return res.status(201).json({ 
+                    message: 'Job created successfully, but failed to retrieve complete job data.', 
+                    id: newJobId, 
+                    ...req.body // Fallback to sending original request body
+                });
+            }
+            if (newJob) {
+                res.status(201).json(newJob); // Send the complete new job object
+            } else {
+                // This case should ideally not happen if insert was successful
+                console.error('Failed to find newly created job with ID:', newJobId);
+                return res.status(500).json({ message: 'Job created, but encountered an error retrieving it.'});
+            }
+        });
     });
 });
 
 // GET /api/jobs - Get all jobs with filtering
 app.get('/api/jobs', (req, res) => {
-    const { job_type, location, keywords } = req.query;
+    const { job_type, location, keywords, salary_min, salary_max } = req.query;
     let sql = 'SELECT * FROM jobs WHERE 1=1';
     const params = [];
 
@@ -98,18 +122,29 @@ app.get('/api/jobs', (req, res) => {
         params.push(location);
     }
     if (keywords) {
-        sql += ' AND job_title LIKE ?'; // Only searching in job_title as per your confirmation
-        params.push(`%${keywords}%`);
+        // Assuming keywords search in job_title, company_name, or job_description
+        // Adjust the fields as necessary
+        sql += ' AND (job_title LIKE ? OR company_name LIKE ? OR job_description LIKE ?)';
+        const keywordParam = `%${keywords}%`;
+        params.push(keywordParam, keywordParam, keywordParam);
+    }
+    if (salary_min) {
+        sql += ' AND salary_max >= ?'; // Jobs where its max salary is at least the desired min
+        params.push(parseFloat(salary_min));
+    }
+    if (salary_max) {
+        sql += ' AND salary_min <= ?'; // Jobs where its min salary is at most the desired max
+        params.push(parseFloat(salary_max));
     }
 
-    sql += ' ORDER BY created_at DESC'; // Optional: order by newest first
+    sql += ' ORDER BY created_at DESC';
 
     db.all(sql, params, (err, rows) => {
         if (err) {
             console.error('Error fetching jobs:', err.message);
             return res.status(500).json({ message: 'Failed to retrieve jobs.', error: err.message });
         }
-        res.json(rows); // This sends the array of jobs (which could be empty)
+        res.json(rows);
     });
 });
 
