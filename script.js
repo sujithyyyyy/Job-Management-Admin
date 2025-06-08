@@ -1,4 +1,6 @@
-const API_BASE_URL = 'http://localhost:3000'; // Corrected Port
+const API_BASE_URL = 'https://job-management-admin-lmqi.onrender.com/api/users'; // Corrected Port
+  .then(res => res.json())
+  .then(data => console.log(data));
 
 
 
