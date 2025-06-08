@@ -12,6 +12,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
+const HOST = '0.0.0.0'; 
 
 // Middleware
 app.use(cors());
@@ -167,6 +168,6 @@ app.get('/api/jobs/:id', (req, res) => {
 
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server running on http://0.0.0.0:${port}`);
 });
