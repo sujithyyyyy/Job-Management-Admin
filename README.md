@@ -1,5 +1,5 @@
-
-# 🚀 JobVista Admin – Job Management Admin System
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Satoshi+variable&pause=1000&width=435&lines=Job-Management-Admin)](https://git.io/typing-svg)
+# 🚀 JobVista Admin – Job Management Admin System 
 Website URL-https://job-management-system-admin.netlify.app
 
 
@@ -13,14 +13,17 @@ Website URL-https://job-management-system-admin.netlify.app
 - 📝 **Create** new job postings using a modal interface
 - 📦 **Store** data in SQLite with instant access
 - 🧰 **REST API** with endpoints for job creation and retrieval
-- 🎯 **Deployed frontend** (Vercel) + **backend** (Render/Node.js)
+- 🎯 **Deployed frontend** (Netlify) + **backend** (Render/Node.js)
 
 ---
 
 ## 🖼️ Preview
 
-![UI Screenshot]!
-[image](https://github.com/user-attachments/assets/c02c31af-b15b-4267-a836-a1b065ac1034)
+![UI Screenshot]
+![image](https://github.com/user-attachments/assets/92734a36-efbf-4347-9184-22abc52fedcb)
+
+
+
 ![image](https://github.com/user-attachments/assets/b82d2d1b-520b-4630-af1b-8fe14c59e9c8)
 
 
@@ -31,7 +34,7 @@ Website URL-https://job-management-system-admin.netlify.app
 
 ├── index.html # Clean, semantic HTML
 ├── styles.css # Tailored UI with modern CSS
-├── script.js # Handles UI, fetch, rendering logic
+├── script.js # Handles UI, fetch, and rendering logic
 ├── server.js # Express server + SQLite API backend
 ├── database.sqlite # Local SQLite DB
 
@@ -40,9 +43,12 @@ Website URL-https://job-management-system-admin.netlify.app
 
 ## ⚙️ Tech Stack
 
-| Frontend | Backend  | Database | Deployment |
-|----------|----------|----------|------------|
-| HTML/CSS/JS | Node.js + Express | SQLite3 | Netlify + Render |
+| Layer       | Stack                        |
+|-------------|------------------------------|
+| Frontend    | HTML, CSS (Satoshi font), JS |
+| Backend     | Node.js, Express             |
+| Database    | SQLite                       |
+| Deployment  | Netlify + Render             |
 
 ---
 
@@ -67,7 +73,7 @@ GET	/api/jobs/:id	Get a job by ID
 💡 Innovation Highlights
 ✅ Modal-powered UX: Replaces full-page reloads with focused user flows.
 
-✅ Smart defaults: Random work model if not provided.
+✅ Smart defaults: Use a random work model if not provided.
 
 ✅ Lightweight DB: Zero external dependencies—portable via SQLite.
 
@@ -83,18 +89,15 @@ GET	/api/jobs/:id	Get a job by ID
 🧑‍💻 Author
 Sujith Sridhar
 🚀 Always learning. Forever building.
-LinkedIn | Portfolio | Email
+## 📫 Connect with Me
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/sujith-sridhar-225169271/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-visit-%23ff69b4?style=flat&logo=vercel)](https://sujith-s-portfolio.vercel.app)
+[![Email](https://img.shields.io/badge/Email-sujith.s2812004@gmail.com-informational?style=flat&logo=gmail)](mailto:sujith.s2812004@gmail.com)
+
 
 🛡️ License
 MIT © 2025 Sujith Sridhar
-
-yaml
-Copy
-Edit
-
----
-
-Let me know if you want a dynamic badge version (e.g., GitHub stats, Vercel preview, or Render logs) — or if you'd like this styled for a GitHub profile instead of a repo.
 
 
 
