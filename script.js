@@ -1,7 +1,4 @@
-const API_BASE_URL = 'https://job-management-admin-lmqi.onrender.com/api'; // Corrected Port
-  .then(res => res.json())
-  .then(data => console.log(data));
-
+const API_BASE_URL = 'https://job-management-admin-lmqi.onrender.com/api';
 
 
 
@@ -359,13 +356,11 @@ if (jobCreationForm) {
 // --- Initial Load ---
 document.addEventListener('DOMContentLoaded', () => {
     fetchJobs(); // Fetch and display all jobs on page load
-    // Initialize filter event listeners if not already done (e.g. for salary sliders)
-    // The salary slider specific setup is below, we'll modify its updateSlider function
 });
 
 
-///////////////////////////////////////
-  // Ensure these are the filter sliders, not the modal's salary inputs
+
+
   const filterMinSalarySlider = document.getElementById("salary-min"); 
   const filterMaxSalarySlider = document.getElementById("salary-max");
   const sliderValueDisplay = document.getElementById("salary-slider-value"); 
