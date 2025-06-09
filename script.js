@@ -1,4 +1,5 @@
-const API_BASE_URL = 'https://job-management-admin-lmqi.onrender.com/api';
+const API_BASE_URL = 'https://job-management-admin-lmqi.onrender.com/api'; // Corrected Port
+
 
 
 
@@ -195,8 +196,7 @@ function timeSince(date) {
     return Math.floor(seconds) + " seconds ago";
 }
 
-// Make sure to remove or comment out any other `renderJobCard` or `createJobCard` functions
-// to avoid conflicts.
+
 
 function createJobCard(job) { // This function seems to be an older/alternative version, ensure it's not conflicting or remove if unused.
     // Create the card element
@@ -246,7 +246,7 @@ function addJobCard(job) { // This function also seems to be an older/alternativ
 
 // Modal Handling
 function openModal() {
-    if (jobCreationModal) jobCreationModal.style.display = 'block';
+    if (jobCreationModal) jobCreationModal.style.display = 'flex';
 }
 
 function closeModal() {
@@ -356,11 +356,12 @@ if (jobCreationForm) {
 // --- Initial Load ---
 document.addEventListener('DOMContentLoaded', () => {
     fetchJobs(); // Fetch and display all jobs on page load
+    // Initialize filter event listeners if not already done (e.g. for salary sliders)
+    // The salary slider specific setup is below, we'll modify its updateSlider function
 });
 
 
-
-
+///////////////////////////////////////
   const filterMinSalarySlider = document.getElementById("salary-min"); 
   const filterMaxSalarySlider = document.getElementById("salary-max");
   const sliderValueDisplay = document.getElementById("salary-slider-value"); 
@@ -466,8 +467,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-
 function applyFilters() {
     const filters = {
         job_type: filterJobType?.value || '',
@@ -479,4 +478,3 @@ function applyFilters() {
 
     fetchJobs(filters);
 }
-
