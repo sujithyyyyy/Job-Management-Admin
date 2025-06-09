@@ -102,8 +102,8 @@ function renderJobCard(job) {
     const timestamp = job.created_at ? timeSince(new Date(job.created_at)) : (job.timestamp || 'Just Now'); // Use a timeSince function or fallback
     const companyInitial = job.company_name ? job.company_name.charAt(0).toUpperCase() : 'C';
     const jobTitle = job.job_title || 'Job Title Not Provided';
-    const experience = job.experience || 'N/A Exp'; // Assuming 'experience' might come from DB or be a new field
-    const workModel = job.job_type || 'N/A'; // e.g., Onsite, Remote, Hybrid
+    const experience = job.experience || '0-1 Exp'; // Assuming 'experience' might come from DB or be a new field
+    const workModel = job.job_type || ['Onsite', 'Remote', 'Hybrid'][Math.floor(Math.random() * 3)]; // e.g., Onsite, Remote, Hybrid
     
     let salaryDisplay = 'N/A';
     if (job.salary_min && job.salary_max) {
