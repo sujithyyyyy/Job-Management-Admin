@@ -64,6 +64,9 @@ npm install
 
 # Start server
 node server.js
+
+```
+
 🎯 API Endpoints
 Method	Endpoint	Description
 GET	/api/jobs	Get all jobs (with filters)
